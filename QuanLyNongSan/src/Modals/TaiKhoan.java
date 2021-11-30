@@ -1,7 +1,7 @@
 package Modals;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import Services.FileHandle;
@@ -38,10 +38,10 @@ public class TaiKhoan implements Serializable{
 	public void allTaiKhoan() {
 		FileHandle file = new FileHandle();
 		TaiKhoan t1 = new TaiKhoan("nguyentran","111111");
-		TaiKhoan t2 = new TaiKhoan("nguyentran","222222");
-		TaiKhoan t3 = new TaiKhoan("nguyentran","333333");
+		TaiKhoan t2 = new TaiKhoan("nguyentran2","222222");
+		TaiKhoan t3 = new TaiKhoan("nguyentran3","333333");
 		
-		List<TaiKhoan> list = new ArrayList<TaiKhoan>();
+		List<TaiKhoan> list = new LinkedList<>();
 		list.add(t1);
 		list.add(t2);
 		list.add(t3);

@@ -2,23 +2,38 @@ package Modals;
 
 import java.io.Serializable;
 
-public class KhachHang implements Serializable{
+public class KhachHang implements Serializable {
 	private int idKh;
 	private String tenKh;
 	private String diaChi;
 	private String sdtKh;
 	private String email;
-	
+	private static int IdNs_A = 100;
+
 	public KhachHang() {
+		this.idKh = IdNs_A++;
 	}
 
-	public KhachHang(int idKh, String tenKh, String diaChi, String sdtKh, String email) {
+	public KhachHang(String tenKh, String diaChi, String sdtKh, String email) {
 		super();
-		this.idKh = idKh;
+		this.idKh = IdNs_A++;
 		this.tenKh = tenKh;
 		this.diaChi = diaChi;
 		this.sdtKh = sdtKh;
 		this.email = email;
+	}
+	public KhachHang(int idKH,String tenKh, String diaChi, String sdtKh, String email) {
+		super();
+		this.idKh = idKH;
+		this.tenKh = tenKh;
+		this.diaChi = diaChi;
+		this.sdtKh = sdtKh;
+		this.email = email;
+	}
+
+	public void printKH() {
+		System.out.printf("\n|%10s|%20s|%15s|%15s|%15s|", this.getIdKh(), this.getTenKh(),
+				this.getDiaChi(), this.getSdtKh(), this.getEmail());
 	}
 
 	public int getIdKh() {
@@ -60,8 +75,5 @@ public class KhachHang implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	public void printDataKH() {
-		System.out.println("tenKh");
-	}
+
 }

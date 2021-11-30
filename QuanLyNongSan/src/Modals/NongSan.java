@@ -24,7 +24,14 @@ public class NongSan implements Serializable{
 		this.gia = gia;
 		this.donViTinh = donViTinh;
 	}
-
+	public NongSan(int idNs, String tenNs, int soLuong, float gia, String donViTinh) {
+		super();
+		this.idNs = idNs;
+		this.tenNs = tenNs;
+		this.soLuong = soLuong;
+		this.gia = gia;
+		this.donViTinh = donViTinh;
+	}
 
 	public int getIdNs() {
 		return idNs;
@@ -74,9 +81,13 @@ public class NongSan implements Serializable{
 	public void setDonViTinh(String donViTinh) {
 		this.donViTinh = donViTinh;
 	}
-	
-	public void printDataNS() {
-		System.out.println("tenNS");
+
+
+	public void printNS() {
+		System.out.printf("\n|%10s|%20s|%15s|%15s|%15s|", this.getIdNs(), this.getTenNs(),
+				this.getSoLuong(), this.getDonViTinh(), this.getGia());
 	}
+	
+	
 }
 

@@ -7,22 +7,21 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import Modals.DLList;
-import Modals.TaiKhoan;
 
 
 
 
 
-public class FileHandle {
+public class FileHandle<T> {
 	
 	
 	
 	//Ghi file 
-	 public <T> void write(List<T> list, String fileName) {
+	 public  void write(List<T> list, String fileName) {
 		 FileOutputStream fos = null;
          ObjectOutputStream oos = null;
          
@@ -59,8 +58,8 @@ public class FileHandle {
 	 
 	 
 	 //Đọc file 
-	 public <T> List<T> read(String fileName) {
-	        List<T> list = new ArrayList<>();
+	 public  List<T> read(String fileName) {
+		 List<T> list = new LinkedList<T>();
 	        
 	        FileInputStream fis = null;
 	        ObjectInputStream ois = null;
@@ -107,6 +106,7 @@ public class FileHandle {
 	        
 	        return list;
 	    }
-	 
+
+	
 	 
 }

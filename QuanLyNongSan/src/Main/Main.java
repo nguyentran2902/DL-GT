@@ -1,18 +1,20 @@
 package Main;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 import Modals.TaiKhoan;
 import Services.FileHandle;
+import Services.HoaDonService;
+import Services.KhachHangService;
 import Services.NongSanService;
 
 public class Main {
 
 	
 	static Scanner input = new Scanner(System.in);
-
+	static 	int chose;
 	
 //____________________main_____________________
 	
@@ -31,7 +33,7 @@ public class Main {
 		TaiKhoan taikhoan = new TaiKhoan();
 		taikhoan.allTaiKhoan();
 		FileHandle file = new FileHandle();
-		List<TaiKhoan> list = new ArrayList<TaiKhoan>();
+		List<TaiKhoan> list = new LinkedList<>();
 		list = file.read("dstaikhoan.txt");
 		
 		System.out.println("Đăng nhập vào hệ thống");
@@ -67,7 +69,9 @@ public class Main {
 	public static void menuMain() {
 		
 		NongSanService.allNS();
-		int chose;
+		KhachHangService.allKH();
+		HoaDonService.allHD();
+	
 		do {
 			System.out.println("                      |--------- Mời bạn chọn dịch vụ --------|");
 			System.out.println("                      |                                       |");
@@ -77,15 +81,17 @@ public class Main {
 			System.out.println("                      |0. Đóng hệ thống.                      |");
 			System.out.println("                      |_______________________________________|");
 			
-			 chose = input.nextInt();
+			while(!checkChose(input.nextLine()));
 			switch(chose) {
 			case 1:
 				NongSanService.MenuNS();
-				
 				break;
-//			case 2:
-//				nh.MenuNS();
-//				break;
+			case 2:
+				KhachHangService.MenuKH();
+				break;
+			case 3:
+				HoaDonService.MenuHD();
+				break;
 			case 0:
 				System.out.println("Đã thoát khỏi hệ thống");
 				break;
@@ -95,7 +101,20 @@ public class Main {
 		}while(chose !=0);
 		System.out.println("Xin cảm ơn !!");
 	}
-	
+		
+		private static boolean checkChose(String input) {
+			if(input != null && isNumeric(input) ) {
+				chose = Integer.parseInt(input);
+				return true;
+			} else {
+				System.err.println("Không hợp lệ. Xin mời bạn nhập lại!!!");
+				return false;
+			}
+		}
+		public static boolean isNumeric(String str) {
+			return str.matches("-?\\d+(\\.\\d+)?");
+		}
+			
 	
 
 }
